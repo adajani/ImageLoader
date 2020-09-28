@@ -8,6 +8,7 @@
 #include "ImageException.h"
 #include "IMetaImage.h"
 #include "ImageFactory.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -55,6 +56,9 @@ void SDLDrawImage(IMetaImage *image) {
 
 int main(int argc, char* args[]) {
     try {
+        //LOG_INFO("Loading image");
+        Logger::GetInstance() << LoggerLevel::INFO << __FUNCDNAME__ <<  "Loading image";
+
         IMetaImage *image = ImageFactory::Get()->Detector("d:\\image_test\\test.bmp");
         image->Load();
         SDLDrawImage(image);
